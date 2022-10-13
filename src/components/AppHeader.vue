@@ -25,17 +25,16 @@
 <script>
 import { mapStores } from "pinia";
 import useModalStore from "@/stores/modal";
+
 export default {
   name: "AppHeader",
-
   computed: {
     ...mapStores(useModalStore),
   },
-
   methods: {
     toggleAuthModal() {
-      this.modalStore.isOPen = !this.modalStore.isOPen;
-      console.log(this.modalStore.isOPen);
+      this.modalStore.isOpen = !this.modalStore.isOpen;
+      console.log(this.modalStore.isOpen);
     },
   },
 };

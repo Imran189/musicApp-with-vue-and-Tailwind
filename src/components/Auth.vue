@@ -62,15 +62,17 @@
           </ul>
 
           <!-- Login Form -->
-          <form v-show="tab === 'login'">
+          <vee-form v-show="tab === 'login'" :validation-schema="schema">
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
-              <input
+              <vee-field
+                name="email"
                 type="email"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email"
               />
+              <ErrorMessage class="text-red-600" name="email" />
             </div>
             <!-- Password -->
             <div class="mb-3">
@@ -87,7 +89,7 @@
             >
               Submit
             </button>
-          </form>
+          </vee-form>
           <!-- Registration Form -->
           <vee-form v-show="tab === 'register'" :validation-schema="schema">
             <!-- Name -->
@@ -110,14 +112,17 @@
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email"
               />
+              <ErrorMessage class="text-red-600" name="email" />
             </div>
             <!-- Age -->
             <div class="mb-3">
               <label class="inline-block mb-2">Age</label>
-              <input
+              <vee-field
+                name="age"
                 type="number"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
               />
+              <ErrorMessage class="text-red-600" name="age" />
             </div>
             <!-- Password -->
             <div class="mb-3">
@@ -179,9 +184,9 @@ export default {
     return {
       tab: "login",
       schema: {
-        name: "required|min:3|max:100|alphaSpaces",
-        email: "",
-        age: "",
+        name: "required|min:3|max:100",
+        email: "required|min:3|max:100|email",
+        age: "required",
         password: "",
         confirm_password: "",
         country: "",
